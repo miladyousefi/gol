@@ -18,7 +18,7 @@ int main (int argc, char ** argv) {
 	
 	if (argc != 2 )
 	{
-		printf("usage : main <fichier grille>");
+		printf("usage : main <file grille>");
 		return 1;
 	}
 
