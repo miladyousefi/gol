@@ -15,25 +15,25 @@ typedef struct {
 } grille;
  
 /** 
- * \brief allocates cells in a grid and initializes all cells to "dead 
+ * \brief allocates cells in a grille and initializes all cells to "dead 
 "
  * \relatesalso grille
  * \param l number of lines
  * \param c number of columns
- * \param g pointer to grid 
+ * \param g pointer to grille 
  */
 void alloue_grille (int l, int c, grille* g);
 
 /** 
- * \brief frees cells from a grid 
+ * \brief frees cells from a grille 
  * \relatesalso grille
- * \param g pointer to grid 
+ * \param g pointer to grille 
 
  */
 void libere_grille (grille* g);
 
 /** 
- * \brief allocates and initializes cells of a grid from a file 
+ * \brief allocates and initializes cells of a grille from a file 
 
  * \relatesalso grille
  * \param filename file name
@@ -42,7 +42,7 @@ void libere_grille (grille* g);
 void init_grille_from_file (char * filename, grille* g);
 
 /** 
- * \brief makes the cell (i, j) of the grid g alive
+ * \brief makes the cell (i, j) of the grille g alive
  * \param i cell row index 
  * \param j cell column index 
  * \param g 
@@ -52,7 +52,7 @@ void init_grille_from_file (char * filename, grille* g);
 static inline void set_vivante(int i, int j, grille g){g.cellules[i][j] = 1;}
 
 /** 
- * \brief makes the cell (i, j) of the grid g alive
+ * \brief makes the cell (i, j) of the grille g alive
  * \param i cell row index 
  * \param j cell column index 
  * \param g 
@@ -62,7 +62,7 @@ static inline void set_vivante(int i, int j, grille g){g.cellules[i][j] = 1;}
 static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
 
 /** 
- * \brief tests if cell (i, j) of grid g is alive 
+ * \brief tests if cell (i, j) of grille g is alive 
  * \param i cell row index 
  * \param j cell column index 
  * \param g 
@@ -73,7 +73,7 @@ static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
 static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] == 1;}
 
 /** 
- * \brief copy a grid (without allocation) 
+ * \brief copy a grille (without allocation) 
  * \relatesalso grille
  * \param gs grille source
  * \param gd grille destination
