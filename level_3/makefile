@@ -30,7 +30,7 @@ libjeu.a : grille.o jeu.o
 clean : 
 	rm $(OBJ)*.o $(BIN)main $(LIB)libjeu.a
 
-archive : 
+dist : 
 	tar -f jeudelavie.tar.gz -cvz $(INC) $(SRC) $(OBJ) $(BIN) $(LIB) makefile Doxyfile
 	
 run1 :
