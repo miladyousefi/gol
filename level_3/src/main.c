@@ -1,6 +1,6 @@
 /** \file main.c
- * \brief programme s'exécutant dans une console :  
- * charge une grille et débute le jeu
+ * \brief program running in a console:
+  * load a grille and start the game 
  */
 
 #include <stdio.h>
@@ -10,15 +10,15 @@
 #include "../include/jeu.h"
 
 /** 
- * \brief initialisation et début du jeu
- * \param argc nombre d'arguments shell
- * \param argv tableau des arguments shell
+ * \brief initialization and start of the game
+ * \param argc number of shell arguments
+ * \param argv shell arguments array
  */
 int main (int argc, char ** argv) {
 	
 	if (argc != 2 )
 	{
-		printf("usage : main <fichier grille>");
+		printf("usage : main <file grille>");
 		return 1;
 	}
 

@@ -49,5 +49,3 @@ run7 :
 	$(BIN)main ../../grilles/grille7.txt
 run8 :
 	$(BIN)main ../../grilles/grille8.txt
-run9 :
-	$(BIN)main ../../grilles/grille9.txt

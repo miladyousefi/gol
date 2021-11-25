@@ -1,16 +1,16 @@
 /** \file io.c
- * \brief entrees / sorties (code source)
+ * \brief input/output (source code)
  */
 
 #include "../include/io.h"
 
-/** \brief défini dans jeu.c*/
+/** \brief defined in jeu.c*/
 extern int (*compte_voisins_vivants) (int, int, grille); 
-/** \brief défini dans jeu.c*/
+/** \brief defined in jeu.c*/
 extern void (*set_continue_vie) (int, int, grille); 
-/** \brief décompte du temps qui passe : variable globale statique : n'est connue que dans io.c*/
+/** \brief counting of the passing time: static global variable: only known in io.c*/
 static int temps = 0;
-/** \brief période d'oscillation de la colonie : 0 pour non oscillante, 1 et + pour oscillante*/
+/** \brief period of oscillation of the colony: 0 for non-oscillating, 1 and + for oscillating */
 static int periode = 0;
 
 void affiche_trait (int c){
@@ -49,11 +49,11 @@ void efface_grille (grille g){
 
 void debut_jeu(grille *g, grille *gc){
 	char c = getchar(); 
-	while (c != 'q') // touche 'q' pour quitter
+	while (c != 'q') // 'q' key to exit
 	{ 
 		switch (c) {
 			case '\n' : 
-			{ // touche "entree" pour évoluer
+			{ // "enter" key to evolve
 				evolue(g,gc);
 				temps++; 
 				efface_grille(*g);
@@ -61,7 +61,7 @@ void debut_jeu(grille *g, grille *gc){
 				break;
 			}
 			case 'c' : 
-			{ // touche "c" pour activer / desactiver le voisinage cyclique
+			{ // "c" key to activate / deactivate the cyclic neighborhood 
 				if (compte_voisins_vivants == compte_voisins_cyclique){
 					compte_voisins_vivants = compte_voisins_non_cyclique;
 					printf("voisinage non cyclique    \n");
@@ -76,7 +76,7 @@ void debut_jeu(grille *g, grille *gc){
 				break;
 			}
 			case 'v' : 
-			{ // touche "v" pour activer/desactiver le viellissement des cellules
+			{ // "v" key to activate / deactivate cell aging
 				if (set_continue_vie == set_ne_viellit_pas){
 					set_continue_vie = set_viellit;
 					printf("viellissement ON     \n");
@@ -90,16 +90,16 @@ void debut_jeu(grille *g, grille *gc){
 				break;
 			}
 			case 'o' :
-			{ // teste si la colonie est oscillante
+			{ // tests if the colony is oscillating
 				periode = oscillante(*g);
-				if (periode==0) printf("Colonie non-oscillante    \n");
-				else printf("Colonie oscillante (période : %d)\n",periode);
+				if (periode==0) printf("Non-oscillating colony    \n");
+				else printf("Oscillating colony (period: %d)\n",periode);
 				while(getchar() != '\n');
 				printf("\n\e[%dA",3); 
 				break;
 			}
 			default : 
-			{ // touche non traitée
+			{ // untreated key
 				printf("\n\e[1A");
 				break;
 			}

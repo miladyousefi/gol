@@ -1,5 +1,5 @@
 /** \file grille.c
- * \brief gestion des grilles (code source)
+ * \brief grille management (source code)
  */
 
 #include "../include/grille.h"
@@ -77,13 +77,13 @@ int grilles_egales(grille a, grille b){
 		for (j=0; j<a.nbc; j++){
 
 			if (est_vivante(i,j,a) && est_vivante(i,j,b)) ;
-			// du fait qu'on ne prend pas l'âge en compte
-			// si une colonie oscille mais s'éteint après x pas de temps
-			// à cause du vieillissement
-			// on dira tout de même qu'elle est oscillante.
-			// tout dépend du moment où on lance le test.
-			// en fait si la période p est inférieure au temps de vie restant x
-			// la colonie est considérée comme oscillante
+			// because we don't take age into account
+			// if a colony oscillates but goes out after x no time
+			// because of aging
+			// we will say all the same that it is oscillating.
+			// it all depends on when we run the test.
+			// in fact if the period p is less than the remaining lifetime x
+			// the colony is considered as oscillating 
 			else if (!(est_vivante(i,j,a)) && !(est_vivante(i,j,b))) ;
 			else if (!(est_viable(i,j,a)) && !(est_viable(i,j,b))) ;
 			else return 0;
