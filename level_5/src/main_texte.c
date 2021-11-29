@@ -1,6 +1,6 @@
 /** \file main.c
  * \brief program running in a console:
-  * load a grid and start the game
+  * load a grille and start the game
  */
 
 #include <stdio.h>

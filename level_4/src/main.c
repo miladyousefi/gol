@@ -1,6 +1,6 @@
 /** \file main.c
- * \brief programme s'exécutant dans une fenêtre graphique (cairo) :  
- * charge les paramètres d'affichage et une grille et débute le jeu
+ * \brief program running in a graphics window (cairo):
+  * load display settings and a grille and start the game 
  */
 
 #include <stdio.h>
@@ -12,9 +12,9 @@
 #include "../include/jeu.h"
 
 /** 
- * \brief initialisation et début du jeu (mode graphique)
- * \param argc nombre d'arguments shell
- * \param argv tableau des arguments shell
+ * \brief initialization and start of the game (graphics mode)
+ * \param argc number of shell arguments
+ * \param argv shell arguments array
  */
 int main (int argc, char *argv[]){
 	
@@ -42,7 +42,7 @@ int main (int argc, char *argv[]){
 	win=XCreateSimpleWindow(dpy, rootwin, 1, 1, SIZEX, SIZEY+70, 0, 
 			BlackPixel(dpy, scr), BlackPixel(dpy, scr));
 
-	XStoreName(dpy, win, "jeu de la vie");
+	XStoreName(dpy, win, "Game of life");
 	XSelectInput(dpy, win, ExposureMask|ButtonPressMask|KeyPressMask);
 	XMapWindow(dpy, win);
 	

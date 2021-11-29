@@ -1,7 +1,8 @@
 /** \file io.c
  * \brief input/output (source code)
  */
-
+#define KRED  "\x1B[31m" // for printf color red
+#define KGRN  "\x1B[32m" //for print color green
 #include "../include/io.h"
 
 /** \brief defined in jeu.c*/
@@ -49,6 +50,12 @@ void efface_grille (grille g){
 
 void debut_jeu(grille *g, grille *gc){
 	char c = getchar(); 
+	if(c=='q'){
+		printf("%s******************************\n",KRED);
+		printf("%s*************     ************\n",KRED);
+		printf("%s------------ Ended -----------\n",KRED);
+		printf("%s************       ***********\n",KRED);
+	}
 	while (c != 'q') // 'q' key to exit
 	{ 
 		switch (c) {
@@ -59,6 +66,14 @@ void debut_jeu(grille *g, grille *gc){
 				efface_grille(*g);
 				affiche_grille(*g);
 				break;
+			}
+			case 'n':
+			{
+				printf("%s******************************\n",KGRN);
+				printf("%s*************     ************\n",KGRN);
+				printf("%s--    Enter a new grille  ----\n",KGRN);
+				printf("%s************       ***********\n",KGRN);
+				return;
 			}
 			case 'c' : 
 			{ // "c" key to activate / deactivate the cyclic neighborhood 
@@ -98,6 +113,8 @@ void debut_jeu(grille *g, grille *gc){
 				printf("\n\e[%dA",3); 
 				break;
 			}
+
+			
 			default : 
 			{ // untreated key
 				printf("\n\e[1A");

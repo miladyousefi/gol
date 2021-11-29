@@ -1,7 +1,8 @@
 /** \file io.c
  * \brief management of inputs / outputs with cairo (source code)
  */
-
+#define KRED  "\x1B[31m" // for printf color red
+#define KGRN  "\x1B[32m" //for print color green
 #include "../include/io.h"
 
 /** \brief defined in jeu.c*/
@@ -194,12 +195,9 @@ void debut_jeu(grille* g, grille* gc, Display* dpy, cairo_surface_t *cs){
 					paint(cs,*g, periode);
 					break;
 					
-				case 'r' : // changing living cells into non-viable cells
-					for (i=0; i<g->nbl; i++){
-						for (j=0; j<g->nbc; j++){
-							if (est_vivante(i,j,*g)) set_nonviable(i,j,*g);
-						}
-					}
+				case 'r' : // reset curently grille
+					copie_grille(greset, *g);
+					temps=0;
 					paint(cs,*g, periode);
 					break;
 					
@@ -296,46 +294,12 @@ void debut_jeu(grille* g, grille* gc, Display* dpy, cairo_surface_t *cs){
 					}
 					break;
 					
-				case 'q' :// draw a left diagonal of living cells
-					XNextEvent(dpy, &e);
-					if(e.type==ButtonPress){
-						l=e.xbutton.x/lrgCase;
-						k=e.xbutton.y/lgrCase;
-						if (l>=0 && l<g->nbc && k>=0 && k<g->nbl){
-							if(e.xbutton.button==3){ // draw and invert the cells
-								j=l;
-								for (i=k; i<g->nbl; i++){
-									if (est_vivante(i,j,*g)) set_morte(i,j,*g);
-									else if (!est_vivante(i,j,*g) && est_viable(i,j,*g)) set_vivante(i,j,*g);
-									j--;
-									if (j<0) break;
-								}
-								j=l+1;
-								for (i=k-1; i>=0; i--){
-									if (est_vivante(i,j,*g)) set_morte(i,j,*g);
-									else if (!est_vivante(i,j,*g) && est_viable(i,j,*g)) set_vivante(i,j,*g);
-									j++;
-									if (j>=g->nbc) break;
-								}
-							}
-							else if (e.xbutton.button==1){ // draw without inverting
-								j=l;
-								for (i=k; i<g->nbl; i++){
-									if (est_viable(i,j,*g)) set_vivante(i,j,*g);
-									j--;
-									if (j<0) break;
-								}
-								j=l+1;
-								for (i=k-1; i>=0; i--){
-									if (est_viable(i,j,*g)) set_vivante(i,j,*g);
-									j++;
-									if (j>=g->nbc) break;
-								}
-							}
-							paint(cs,*g, periode);
-						}
-					}
-					break;
+				case 'q' : //quit
+					printf("%s******************************\n",KRED);
+					printf("%s*************     ************\n",KRED);
+					printf("%s------------ Ended -----------\n",KRED);
+					printf("%s************       ***********\n",KRED);
+					return;
 					
 				case 's' : // draw a right diagonal of living cells
 					XNextEvent(dpy, &e);
@@ -409,11 +373,11 @@ void debut_jeu(grille* g, grille* gc, Display* dpy, cairo_surface_t *cs){
 					break;
 					
 				case 'n' : // reset the grille to the starting situation
-					copie_grille(greset, *g);
-					temps=0;
-					paint(cs,*g, periode);
-					break;
-					
+					printf("%s******************************\n",KGRN);
+					printf("%s*************     ************\n",KGRN);
+					printf("%s--    Enter a new grille  ----\n",KGRN);
+					printf("%s************       ***********\n",KGRN);
+					return;
 				default :
 					break;
 			}

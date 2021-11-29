@@ -52,19 +52,10 @@ libjeu.a : jeu.o grille.o | lib
 
 obj : 
 	mkdir obj
-
-lib : 
-	mkdir lib
-
-bin : 
-	mkdir bin
-
 clean : 
 	rm obj/* bin/*
-	
-cleanall : clean
-	rm -r lib/* doc/*
-
+docs: 
+	doxygen Doxyfile
 dist : 
-	tar -f jeudelavie.tar.gz -cvz src/*.c include/*.h makefile Doxyfile explication.txt
+	tar -f dist.tar.gz -cvz src/*.c include/*.h makefile Doxyfile
 

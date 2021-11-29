@@ -41,8 +41,8 @@ int compte_voisins_non_cyclique (int i, int j, grille g);
 /** 
  * \brief make the \b g grille evolve by one time step
  * \relatesalso grille
- * \param g (pointer to) the evolving grid
- * \param gc (pointer to) the buffer grid
+ * \param g (pointer to) the evolving grille
+ * \param gc (pointer to) the buffer grille
  * \pre \b g and \b gc are allocated and have the same size
  */
 void evolue (grille *g, grille *gc);

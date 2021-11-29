@@ -38,18 +38,18 @@ int compte_voisins_cyclique (int i, int j, grille g);
 int compte_voisins_non_cyclique (int i, int j, grille g);
 
 /** 
- * \brief make the \b g grid evolve by one time step
+ * \brief make the \b g grille evolve by one time step
  * \relatesalso grille
- * \param g (pointer to) the evolving grid
- * \param gc (pointer to) the buffer grid
+ * \param g (pointer to) the evolving grille
+ * \param gc (pointer to) the buffer grille
  * \pre \b g and \b gc are allocated and have the same size
  */
 void evolue (grille *g, grille *gc);
 
 /** 
- * \brief indicates whether a grid is oscillating or not
+ * \brief indicates whether a grille is oscillating or not
  * \relatesalso grille
- * \param g     the grid to be evaluated
+ * \param g     the grille to be evaluated
  * \return an integer, the period of oscillation or 0
  */
 int oscillante(grille g);

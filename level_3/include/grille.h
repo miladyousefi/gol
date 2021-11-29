@@ -18,7 +18,7 @@ typedef struct {
 } grille;
  
 /** 
- * \brief allocates cells in a grid and initializes all cells to "dead"
+ * \brief allocates cells in a grille and initializes all cells to "dead"
  * \relatesalso grille
  * \param l number of lines
  * \param c number of columns
@@ -34,15 +34,15 @@ void alloue_grille (int l, int c, grille* g);
 void libere_grille (grille* g);
 
 /** 
- * \brief allocates and initializes cells of a grid from a file
+ * \brief allocates and initializes cells of a grille from a file
  * \relatesalso grille
  * \param filename file name
- * \param g pointer to grid
+ * \param g pointer to grille
  */
 void init_grille_from_file (char * filename, grille* g);
 
 /** 
- * \brief makes the cell (i, j) of the grid g alive
+ * \brief makes the cell (i, j) of the grille g alive
  * \param i cell row index
  * \param j cell column index
  * \param g grille
@@ -52,7 +52,7 @@ void init_grille_from_file (char * filename, grille* g);
 static inline void set_vivante(int i, int j, grille g){g.cellules[i][j] = 1;}
 
 /** 
- * \brief makes dead cell (i, j) of grid g
+ * \brief makes dead cell (i, j) of grille g
  * \param i cell row index
  * \param j cell column index
  * \param g grille
@@ -62,7 +62,7 @@ static inline void set_vivante(int i, int j, grille g){g.cellules[i][j] = 1;}
 static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
 
 /** 
- * \brief makes cell (i, j) of grid g non-viable
+ * \brief makes cell (i, j) of grille g non-viable
  * \param i cell row index
  * \param j cell column index
  * \param g grille
@@ -71,7 +71,7 @@ static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
  */
 static inline void set_nonviable(int i, int j, grille g){g.cellules[i][j] = -1;} 
 /** 
- * \brief tests if cell (i, j) of grid g is viable
+ * \brief tests if cell (i, j) of grille g is viable
  * \param i cell row index
  * \param j cell column index
  * \param g grille
@@ -82,7 +82,7 @@ static inline void set_nonviable(int i, int j, grille g){g.cellules[i][j] = -1;}
 static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] > 0;}
 
 /** 
- * \brief tests if cell (i, j) of grid g is viable
+ * \brief tests if cell (i, j) of grille g is viable
  * \param i cell row index
  * \param j cell column index
  * \param g grille
@@ -113,7 +113,7 @@ void set_ne_viellit_pas(int i, int j, grille g);
 void set_viellit(int i, int j, grille g); 
 
 /** 
- * \brief copy a grid (without allocation)
+ * \brief copy a grille (without allocation)
  * \relatesalso grille
  * \param gs grille source
  * \param gd grille destination
@@ -122,7 +122,7 @@ void set_viellit(int i, int j, grille g);
 void copie_grille (grille gs, grille gd);
 
 /** 
- * \brief indicates whether two grids are equal or not (does not take age into account)
+ * \brief indicates whether two grilles are equal or not (does not take age into account)
  * \relatesalso grille
  * \param a grille 1
  * \param b grille 2

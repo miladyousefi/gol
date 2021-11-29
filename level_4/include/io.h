@@ -19,14 +19,14 @@
 #define SIZEX 640
 #define SIZEY 640
 
-#define TMAX 1000
+#define TMAX 100
 
 /** 
  * \brief display of a grille (graphics mode)
  * \relatesalso grille
  * \param surface cairo surface to paint
- * \param g grid to display
- * \param periode grid at period of oscillation of the grille
+ * \param g grille to display
+ * \param periode grille at period of oscillation of the grille
  */
 void paint(cairo_surface_t *surface, grille g, int periode);
 

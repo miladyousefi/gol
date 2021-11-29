@@ -24,7 +24,7 @@ void affiche_trait (int c);
 void affiche_ligne (int c, int* ligne);
 
 /** 
- * \brief display of a grid (text mode)
+ * \brief display of a grille (text mode)
  * \relatesalso grille
  * \param g grille to display
  */
@@ -40,7 +40,7 @@ void efface_grille (grille g);
 /** 
  * \brief start a game (text mode)
  * \param g grille game
- * \param gc buffer grid (necessary for the \ c function to evolve)
+ * \param gc buffer grille (necessary for the \ c function to evolve)
  */
 void debut_jeu(grille *g, grille *gc);
 

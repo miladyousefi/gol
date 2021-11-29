@@ -25,7 +25,7 @@ void affiche_ligne (int c, int* ligne);
 /** 
  * \brief display of a grille
  * \relatesalso grille
- * \param g grid to display
+ * \param g grille to display
  */
 void affiche_grille (grille g);
 
